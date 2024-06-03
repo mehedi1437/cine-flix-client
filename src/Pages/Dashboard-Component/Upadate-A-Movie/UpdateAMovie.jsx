@@ -3,6 +3,7 @@ const UpdateAMovie = () => {
     return (
         <div>
             update a movie 
+
         </div>
     );
 };
