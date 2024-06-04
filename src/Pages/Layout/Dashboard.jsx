@@ -15,7 +15,6 @@ const Dashboard = () => {
           <li>
             <Link to='/dashboard/my-all-movies'>My All Movies</Link>
           </li>
-          
           <li>
             <Link>View and Edit Profile</Link>
           </li>
