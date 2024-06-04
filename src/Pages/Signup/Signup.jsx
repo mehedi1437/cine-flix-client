@@ -8,8 +8,8 @@ const Signup = () => {
   const [passError, setPassError] = useState("");
   const [success, setSuccess] = useState("");
   const { createUser } = useContext(AuthContext);
-  
-  const token = localStorage.getItem('token')
+
+  const token = localStorage.getItem("token");
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -65,7 +65,7 @@ const Signup = () => {
           Swal.fire({
             title: "Good job!",
             text: "User Created Succesfully",
-            icon: "success"
+            icon: "success",
           });
           // console.log("user name updated");
           //  SAve user info into Db
@@ -75,12 +75,12 @@ const Signup = () => {
               name: user.displayName,
             };
             // console.log(userInfo);
-            fetch("http://localhost:5000/users", {
+            fetch("https://cine-flix-server-phi.vercel.app/users", {
               method: "POST",
-              headers: { "content-type": "application/json",
-              authorization:`Bearer ${token}`
-
-               },
+              headers: {
+                "content-type": "application/json",
+                authorization: `Bearer ${token}`,
+              },
               body: JSON.stringify(userInfo),
             })
               .then((res) => res.json())

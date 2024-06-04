@@ -11,8 +11,8 @@ const Login = () => {
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
   const { signIn, googleSignIn } = useContext(AuthContext);
-  
-  const token = localStorage.getItem('token')
+
+  const token = localStorage.getItem("token");
 
   const handleLogin = (event) => {
     event.preventDefault();
@@ -59,19 +59,19 @@ const Login = () => {
               name: loggedUser.displayName,
             };
             console.log(userInfo);
-            fetch("http://localhost:5000/users", {
+            fetch("https://cine-flix-server-phi.vercel.app/users", {
               method: "POST",
-              headers: { "content-type": "application/json",
-              authorization:`Bearer ${token}`
-               },
+              headers: {
+                "content-type": "application/json",
+                authorization: `Bearer ${token}`,
+              },
               body: JSON.stringify(userInfo),
             })
-            .then(res=>res.json())
-            .then(data => {
-              // console.log(data)
-              localStorage.setItem('token',data?.token)
-
-            })
+              .then((res) => res.json())
+              .then((data) => {
+                // console.log(data)
+                localStorage.setItem("token", data?.token);
+              });
           }
         }
         navigate(from);

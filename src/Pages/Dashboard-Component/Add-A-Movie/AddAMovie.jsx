@@ -4,31 +4,26 @@ import { AuthContext } from "../../../Provider/AuthProvider";
 import toast from "react-hot-toast";
 
 const AddAMovie = () => {
-  
-  const token = localStorage.getItem('token')
-  const {
-    register,
-    handleSubmit,
-
-  } = useForm();
+  const token = localStorage.getItem("token");
+  const { register, handleSubmit } = useForm();
   const onSubmit = (data) => {
     // console.log(data);
-    fetch('http://localhost:5000/movie',{
-        method:'POST',
-        headers: {"content-type":"application/json",
-        authorization:`Bearer ${token}`
-
-        },
-        body:JSON.stringify(data)
+    fetch("https://cine-flix-server-phi.vercel.app/movie", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(data),
     })
-    .then(res => res.json())
-    .then(data => {
-        if(data.insertedId){
-            toast.success('Movie created Successfully ');
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.insertedId) {
+          toast.success("Movie created Successfully ");
         }
-    })
+      });
   };
-  const {user} = useContext(AuthContext)
+  const { user } = useContext(AuthContext);
   return (
     <div>
       {/* Form */}
@@ -41,12 +36,12 @@ const AddAMovie = () => {
               onSubmit={handleSubmit(onSubmit)}
               className="card-body lg:grid grid-cols-2"
             >
-                <div className="form-control">
+              <div className="form-control">
                 <label className="label">
                   <span className="label-text">Movie Name</span>
                 </label>
                 <input
-                {...register("name")}
+                  {...register("name")}
                   type="text"
                   placeholder="Movie Name"
                   className="input input-bordered"
@@ -58,7 +53,7 @@ const AddAMovie = () => {
                   <span className="label-text">Email</span>
                 </label>
                 <input
-                {...register("email")}
+                  {...register("email")}
                   type="email"
                   value={user.email}
                   placeholder="email"
@@ -66,9 +61,9 @@ const AddAMovie = () => {
                   required
                 />
               </div>
-              
+
               <div className="form-control">
-              <label className="label">
+                <label className="label">
                   <span className="label-text">Genre</span>
                 </label>
                 <select {...register("genre")} className="input input-bordered">
@@ -84,7 +79,7 @@ const AddAMovie = () => {
                   <span className="label-text">Rating</span>
                 </label>
                 <input
-                {...register("rating")}
+                  {...register("rating")}
                   type="number"
                   placeholder="Rating"
                   className="input input-bordered"
@@ -96,7 +91,7 @@ const AddAMovie = () => {
                   <span className="label-text">Release Date</span>
                 </label>
                 <input
-                {...register("releaseDate")}
+                  {...register("releaseDate")}
                   type="date"
                   placeholder="Release date"
                   className="input input-bordered"
@@ -108,7 +103,7 @@ const AddAMovie = () => {
                   <span className="label-text">Image</span>
                 </label>
                 <input
-                {...register("img")}
+                  {...register("img")}
                   type="text"
                   placeholder="image url"
                   className="input input-bordered"
@@ -116,10 +111,13 @@ const AddAMovie = () => {
                 />
               </div>
               <div className="form-control">
-              <label className="label">
+                <label className="label">
                   <span className="label-text">Language</span>
                 </label>
-                <select {...register("language")} className="input input-bordered">
+                <select
+                  {...register("language")}
+                  className="input input-bordered"
+                >
                   <option value="Action">Bangla</option>
                   <option value="Romantic">Hindi</option>
                   <option value="Commedy">Tamil</option>
@@ -132,7 +130,7 @@ const AddAMovie = () => {
                   <span className="label-text">Description</span>
                 </label>
                 <input
-                {...register("description")}
+                  {...register("description")}
                   type="text"
                   placeholder="Description"
                   className="input input-bordered"

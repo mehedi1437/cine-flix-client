@@ -6,20 +6,19 @@ import Swal from "sweetalert2";
 const MyAllMovie = () => {
   const { user } = useContext(AuthContext);
   const [movies, setMovies] = useState([]);
-  
-  const token = localStorage.getItem('token')
+
+  const token = localStorage.getItem("token");
 
   useEffect(() => {
-    fetch(`http://localhost:5000/singleMovie/${user.email}`)
+    fetch(`https://cine-flix-server-phi.vercel.app/singleMovie/${user.email}`)
       .then((res) => res.json())
       .then((data) => {
         setMovies(data);
       });
   }, [user]);
 
-  // Handele Movie delete 
-  const handleDelete=(id)=>{
-  
+  // Handele Movie delete
+  const handleDelete = (id) => {
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -31,25 +30,25 @@ const MyAllMovie = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         // console.log("delete comfirmed");
-        fetch(`http://localhost:5000/movie/${id}`, {
+        fetch(`https://cine-flix-server-phi.vercel.app/movie/${id}`, {
           method: "DELETE",
-          headers: {"content-type":"application/json",
-        authorization:`Bearer ${token}`
-
-        },
+          headers: {
+            "content-type": "application/json",
+            authorization: `Bearer ${token}`,
+          },
         })
           .then((res) => res.json())
           .then((data) => {
             // console.log(data);
             if (data.deletedCount > 0) {
               Swal.fire("Deleted!", "Your Movie  has been deleted.", "success");
-              const remaining = movies.filter(movie => movie._id  !== id)
+              const remaining = movies.filter((movie) => movie._id !== id);
               setMovies(remaining);
             }
           });
       }
     });
-  }
+  };
   return (
     <div>
       <h1 className="text-center text-3xl my-6 ">
@@ -72,9 +71,16 @@ const MyAllMovie = () => {
               <p>Rating : {movie.rating}</p>
             </div>
             <div className="space-x-5 mt-4 ">
-              <button  className="btn bg-[#0e193a] text-white"><Link to={`/dashboard/update-movie/${movie._id}`}>Edit</Link>  </button>
-             
-              <button onClick={()=>handleDelete(movie._id)} className="btn bg-[#0e193a] text-white">Delete</button>
+              <button className="btn bg-[#0e193a] text-white">
+                <Link to={`/dashboard/update-movie/${movie._id}`}>Edit</Link>{" "}
+              </button>
+
+              <button
+                onClick={() => handleDelete(movie._id)}
+                className="btn bg-[#0e193a] text-white"
+              >
+                Delete
+              </button>
             </div>
           </div>
         ))}

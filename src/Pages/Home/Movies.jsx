@@ -3,24 +3,24 @@ import { Link } from "react-router-dom";
 
 const Movies = () => {
   const [movies, setMovies] = useState([]);
-  
-  const [searchText,setSearchText]=useState('')
+
+  const [searchText, setSearchText] = useState("");
   useEffect(() => {
-    fetch("http://localhost:5000/movies")
+    fetch("https://cine-flix-server-phi.vercel.app/movies")
       .then((res) => res.json())
       .then((data) => {
         setMovies(data);
       });
   }, []);
   //  handle movie search
-const handleMovieSearch =()=>{
-    fetch(`http://localhost:5000/movieSearch/${searchText}`)
-      .then(res => res.json())
-      .then(data=>{
+  const handleMovieSearch = () => {
+    fetch(`https://cine-flix-server-phi.vercel.app/movieSearch/${searchText}`)
+      .then((res) => res.json())
+      .then((data) => {
         setMovies(data);
-      })
-  }
-console.log(searchText);
+      });
+  };
+  console.log(searchText);
   return (
     <div>
       <h1 className="text-center text-3xl my-7">
@@ -28,12 +28,17 @@ console.log(searchText);
       </h1>
       <div className="flex space-x-2  my-10 w-fit mx-auto">
         <input
-        onChange={(e)=> setSearchText(e.target.value)}
+          onChange={(e) => setSearchText(e.target.value)}
           type="text"
           placeholder="Type here"
           className="input input-bordered input-primary w-full max-w-xs text-black"
         />
-        <button onClick={handleMovieSearch}  className="btn bg-[#f4626e] border-none">search</button>
+        <button
+          onClick={handleMovieSearch}
+          className="btn bg-[#f4626e] border-none"
+        >
+          search
+        </button>
       </div>
       <div className="grid grid-cols-4">
         {movies?.map((movie) => (
