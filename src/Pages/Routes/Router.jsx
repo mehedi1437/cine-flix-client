@@ -12,6 +12,7 @@ import MyAllMovie from "../Dashboard-Component/MyAllMovie/MyAllMovie";
 import Movies from "../Home/Movies";
 import ViewMovieDetails from "../Home/ViewMovieDetails";
 import UpdateAMovie from "../Dashboard-Component/Upadate-A-Movie/UpdateAMovie";
+import UpdateProfile from "../Dashboard-Component/UpdateProfile/UpdateProfile";
 
 const router = createBrowserRouter([
   {
@@ -44,7 +45,7 @@ const router = createBrowserRouter([
     ],
   },
   {
-    path: "/dashboard",
+    path: "/dashboard/",
     element: (
       <PrivetRoutes>
         <Dashboard></Dashboard>
@@ -52,8 +53,13 @@ const router = createBrowserRouter([
     ),
     children: [
       {
-        path: "/dashboard/home",
+        path: "/dashboard/",
         element: <Home></Home>,
+      },
+      {
+        path: "/dashboard/update-profile/:id",
+        element: <UpdateProfile></UpdateProfile>,
+        loader:({params})=> fetch(`http://localhost:5000/users/get/${params.id}`)
       },
       {
         path: "/dashboard/add-a-movie",

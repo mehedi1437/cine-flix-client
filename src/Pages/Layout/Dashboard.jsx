@@ -7,17 +7,17 @@ const Dashboard = () => {
         <ul className="mt-16 p-4 w-80 space-y-3 text-bold font-mono text-xl  text-white">
           {/* Sidebar content here */}
           <li>
-            <Link to='/dashboard/home'>DashBoard Home</Link>
+            <Link to='/dashboard/'>DashBoard Home</Link>
           </li>
           <li>
             <Link to='/dashboard/add-a-movie'>Create a Movie</Link>
           </li>
           <li>
-            <Link to='/dashboard/my-all-movies'>My Created Movie</Link>
+            <Link to='/dashboard/my-all-movies'>My All Movies</Link>
           </li>
           
           <li>
-            <Link>Delete a Movie</Link>
+            <Link>View and Edit Profile</Link>
           </li>
           <li>
             <Link to="/">Back to home</Link>

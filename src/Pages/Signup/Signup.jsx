@@ -8,9 +8,11 @@ const Signup = () => {
   const [passError, setPassError] = useState("");
   const [success, setSuccess] = useState("");
   const { createUser } = useContext(AuthContext);
+  
+  const token = localStorage.getItem('token')
   const navigate = useNavigate();
   const location = useLocation();
-  
+
   const from = location.state?.from?.pathname || "/";
 
   const handleSignup = (event) => {
@@ -36,8 +38,8 @@ const Signup = () => {
     createUser(email, password)
       .then((result) => {
         const user = result.user;
-        console.log(user);
 
+        console.log(user);
         updateUserData(result.user, name, photo);
         // setPassError("");
         form.reset();
@@ -45,12 +47,9 @@ const Signup = () => {
         if (success) {
           Swal.fire({
             icon: "success",
-
             text: "User has been created succesfully",
           });
-          
         }
-        
       })
       .catch((error) => {
         setPassError(error.message);
@@ -63,7 +62,30 @@ const Signup = () => {
         photoURL: photoUrl,
       })
         .then(() => {
-          console.log("user name updated");
+          Swal.fire({
+            title: "Good job!",
+            text: "User Created Succesfully",
+            icon: "success"
+          });
+          // console.log("user name updated");
+          //  SAve user info into Db
+          if (user?.email) {
+            const userInfo = {
+              email: user.email,
+              name: user.displayName,
+            };
+            // console.log(userInfo);
+            fetch("http://localhost:5000/users", {
+              method: "POST",
+              headers: { "content-type": "application/json",
+              authorization:`Bearer ${token}`
+
+               },
+              body: JSON.stringify(userInfo),
+            })
+              .then((res) => res.json())
+              .then((data) => console.log(data));
+          }
           navigate(from);
         })
         .catch((error) => console.log(error));
@@ -71,7 +93,7 @@ const Signup = () => {
   };
 
   return (
-    <div className="hero min-h-screen bg-base-200">
+    <div className="hero min-h-screen bg-base-200 text-black">
       <div className="hero-content flex-col lg:flex-row ">
         <div className=" w-1/2">
           <img src={img} alt="" />

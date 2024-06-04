@@ -6,6 +6,7 @@ import toast from "react-hot-toast";
 const UpdateAMovie = () => {
 
     const movies = useLoaderData();
+    const token = localStorage.getItem('token')
     console.log(movies);
     const {_id,name,img,rating,genre,language,releaseDate,description} = movies || {}
 
@@ -18,7 +19,10 @@ const UpdateAMovie = () => {
         console.log(data);
         fetch(`http://localhost:5000/update-movies/${_id}`,{
             method:'PUT',
-            headers: {"content-type":"application/json"},
+            headers: {
+              "content-type":"application/json",
+              authorization:`Bearer ${token}`
+            },
             body:JSON.stringify(data)
         })
         .then(res => res.json())

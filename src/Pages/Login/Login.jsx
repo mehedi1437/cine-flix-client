@@ -11,6 +11,8 @@ const Login = () => {
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
   const { signIn, googleSignIn } = useContext(AuthContext);
+  
+  const token = localStorage.getItem('token')
 
   const handleLogin = (event) => {
     event.preventDefault();
@@ -43,13 +45,34 @@ const Login = () => {
       .then((result) => {
         const loggedUser = result.user;
 
-        console.log(loggedUser);
+        console.log(loggedUser.email);
         setPassError("");
         if (loggedUser) {
           Swal.fire({
             icon: "success",
             text: "User Logged in succesfully",
           });
+          // SAve user info into Db
+          if (loggedUser?.email) {
+            const userInfo = {
+              email: loggedUser.email,
+              name: loggedUser.displayName,
+            };
+            console.log(userInfo);
+            fetch("http://localhost:5000/users", {
+              method: "POST",
+              headers: { "content-type": "application/json",
+              authorization:`Bearer ${token}`
+               },
+              body: JSON.stringify(userInfo),
+            })
+            .then(res=>res.json())
+            .then(data => {
+              // console.log(data)
+              localStorage.setItem('token',data?.token)
+
+            })
+          }
         }
         navigate(from);
       })
@@ -59,7 +82,7 @@ const Login = () => {
   };
 
   return (
-    <div className="hero min-h-screen bg-base-200">
+    <div className="hero min-h-screen bg-base-200 text-black">
       <div className="hero-content flex-col lg:flex-row ">
         <div className=" w-1/2">
           <img src={img} alt="" />
@@ -113,7 +136,7 @@ const Login = () => {
               </div>
               <br />
             </form>
-            <p className="mt-4 text-center">
+            <p className="mt-4 text-center text-black">
               New to CineFlix ?
               <Link to="/signup" className="text-blue-700 font-bold">
                 Sign up

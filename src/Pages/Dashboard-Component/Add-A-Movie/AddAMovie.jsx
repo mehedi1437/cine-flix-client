@@ -4,16 +4,21 @@ import { AuthContext } from "../../../Provider/AuthProvider";
 import toast from "react-hot-toast";
 
 const AddAMovie = () => {
+  
+  const token = localStorage.getItem('token')
   const {
     register,
     handleSubmit,
 
   } = useForm();
   const onSubmit = (data) => {
-    console.log(data);
+    // console.log(data);
     fetch('http://localhost:5000/movie',{
         method:'POST',
-        headers: {"content-type":"application/json"},
+        headers: {"content-type":"application/json",
+        authorization:`Bearer ${token}`
+
+        },
         body:JSON.stringify(data)
     })
     .then(res => res.json())
