@@ -15,9 +15,7 @@ const Dashboard = () => {
           <li>
             <Link to='/dashboard/my-all-movies'>My Created Movie</Link>
           </li>
-          <li>
-            <Link to='/dashboard/update-a-movie'>Update a Movie </Link>
-          </li>
+          
           <li>
             <Link>Delete a Movie</Link>
           </li>

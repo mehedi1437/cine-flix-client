@@ -23,6 +23,9 @@ const Navbar = () => {
         <Link>About</Link>
       </li>
       <li>
+        <Link to='/all-movies'>Movies</Link>
+      </li>
+      <li>
         <Link to='/dashboard'>Dashboard</Link>
       </li>
      

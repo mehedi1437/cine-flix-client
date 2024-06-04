@@ -9,6 +9,8 @@ import HomePage from "../Home/HomePage";
 import Home from "../Dashboard-Component/DashboardHome/Home";
 import AddAMovie from "../Dashboard-Component/Add-A-Movie/AddAMovie";
 import MyAllMovie from "../Dashboard-Component/MyAllMovie/MyAllMovie";
+import Movies from "../Home/Movies";
+import ViewMovieDetails from "../Home/ViewMovieDetails";
 import UpdateAMovie from "../Dashboard-Component/Upadate-A-Movie/UpdateAMovie";
 
 const router = createBrowserRouter([
@@ -17,10 +19,20 @@ const router = createBrowserRouter([
     element: <Main></Main>,
     errorElement: <ErrorPage></ErrorPage>,
     children: [
-        {
-            path:'/',
-            element:<HomePage></HomePage>
-        },
+      {
+        path: "/",
+        element: <HomePage></HomePage>,
+      },
+      {
+        path: "/all-movies",
+        element: <Movies></Movies>,
+      },
+      {
+        path: "/view-details/:id",
+        element: <ViewMovieDetails></ViewMovieDetails>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/singleMovies/${params.id}`),
+      },
       {
         path: "/log-in",
         element: <Login></Login>,
@@ -37,26 +49,27 @@ const router = createBrowserRouter([
       <PrivetRoutes>
         <Dashboard></Dashboard>
       </PrivetRoutes>
-      
     ),
-    children:[
+    children: [
       {
-        path:'/dashboard/home',
-        element:<Home></Home>
+        path: "/dashboard/home",
+        element: <Home></Home>,
       },
       {
-        path:'/dashboard/add-a-movie',
-        element:<AddAMovie></AddAMovie>
+        path: "/dashboard/add-a-movie",
+        element: <AddAMovie></AddAMovie>,
       },
       {
-        path:'/dashboard/my-all-movies',
-        element:<MyAllMovie></MyAllMovie>
+        path: "/dashboard/my-all-movies",
+        element: <MyAllMovie></MyAllMovie>,
       },
       {
-        path:'/dashboard/update-a-movie',
-        element:<UpdateAMovie></UpdateAMovie>
+        path:'/dashboard/update-movie/:id',
+        element:<UpdateAMovie></UpdateAMovie>,
+        loader:({params})=> fetch(`http://localhost:5000/singleMovies/${params.id}`)
       }
-    ]
+      
+    ],
   },
 ]);
 
