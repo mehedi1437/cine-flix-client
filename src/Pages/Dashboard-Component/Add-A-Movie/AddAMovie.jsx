@@ -27,11 +27,11 @@ const AddAMovie = () => {
   return (
     <div>
       {/* Form */}
-      <div className="hero min-h-screen  bg-base-200">
+      <div className="hero lg:min-h-screen  bg-base-200">
         <div className="hero-content flex-col ">
-          <h1 className="text-5xl font-bold text-[#0e193a]">Add Your Movie</h1>
+          <h1 className="lg:text-5xl text-3xl font-bold text-[#0e193a]">Add Your Movie</h1>
 
-          <div className="card   w-[800px] shadow-2xl bg-base-100">
+          <div className="card w-[373px]  lg:w-[800px] shadow-2xl bg-base-100">
             <form
               onSubmit={handleSubmit(onSubmit)}
               className="card-body lg:grid grid-cols-2"

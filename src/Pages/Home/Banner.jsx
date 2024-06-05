@@ -15,13 +15,13 @@ const Banner = () => {
     <div>
       <h3 className="text-center text-4xl border-b-4 border-b-[#f4626e] w-fit mx-auto my-16">Trending Movies </h3>
       <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
-        <SwiperSlide><img className="h-[700px] w-[100vw]" src={img1} alt="" /></SwiperSlide>
-        <SwiperSlide><img className="h-[700px] w-[100vw]"  src={img2} alt="" /></SwiperSlide>
-        <SwiperSlide><img className="h-[700px] w-[100vw]" src={img3} alt="" /></SwiperSlide>
-        <SwiperSlide><img className="h-[700px] w-[100vw]" src={img4} alt="" /></SwiperSlide>
-        <SwiperSlide><img className="h-[700px] w-[100vw]" src={img5} alt="" /></SwiperSlide>
-        <SwiperSlide><img className="h-[700px] w-[100vw]" src={img6} alt="" /></SwiperSlide>
-        <SwiperSlide><img className="h-[700px] w-[100vw]" src={img7} alt="" /></SwiperSlide>
+        <SwiperSlide><img className="lg:h-[700px] w-[100vw]"  src={img2} alt="" /></SwiperSlide>
+        <SwiperSlide><img className="lg:h-[700px] w-[100vw]" src={img1} alt="" /></SwiperSlide>
+        <SwiperSlide><img className="lg:h-[700px] w-[100vw]" src={img3} alt="" /></SwiperSlide>
+        <SwiperSlide><img className="lg:h-[700px] w-[100vw]" src={img4} alt="" /></SwiperSlide>
+        <SwiperSlide><img className="lg:h-[700px] w-[100vw]" src={img5} alt="" /></SwiperSlide>
+        <SwiperSlide><img className="lg:h-[700px] w-[100vw]" src={img6} alt="" /></SwiperSlide>
+        <SwiperSlide><img className="lg:h-[700px] w-[100vw]" src={img7} alt="" /></SwiperSlide>
       </Swiper>
     </div>
   );

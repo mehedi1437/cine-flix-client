@@ -7,9 +7,9 @@ const ViewMovieDetails = () => {
     viewDetails || {};
     console.log(name);
   return (
-    <div className="max-w-lg mx-auto my-10 p-10 rounded-lg">
+    <div className="max-w-full mx-auto my-10 p-10 rounded-lg ">
       <div className=" mx-auto">
-        <img className=" h-[531px] w-[404px] rounded-lg" src={img} alt="" />
+        <img className=" h-[330px] w-[266px] lg:h-[531px] lg:w-[404px] rounded-lg" src={img} alt="" />
       </div>
       <div className="text-xl my-12 text-white  space-y-4">
         <p>Movie name : {name}</p>

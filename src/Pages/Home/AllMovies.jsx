@@ -29,19 +29,19 @@ const AllMovies = () => {
   };
   return (
     <>
-      <div className="my-20 flex justify-between items-center">
+      <div className="my-20 space-y-5 mx-5 lg:flex justify-between items-center">
         <div>
           <h3 className="w-fit border-b-[#f4626e] border-b-4 text-3xl ">
             Latest Movies
           </h3>
         </div>
-        <div className=" space-x-2">
+        <div className=" space-x-2 space-y-2">
           <button
             onClick={() => handleTabClick("Action")}
             className={
               activeTab == "Action"
-                ? "bg-[#f4626e] p-3"
-                : "bg-white p-3 text-black"
+                ? "bg-[#f4626e] lg:p-3 p-1"
+                : "bg-white lg:p-3 p-1 text-black"
             }
           >
             Action
@@ -50,8 +50,8 @@ const AllMovies = () => {
             onClick={() => handleTabClick("Romantic")}
             className={
               activeTab == "Romantic"
-                ? "bg-[#f4626e] p-3"
-                : "bg-white p-3 text-black"
+                ? "bg-[#f4626e] lg:p-3 p-1"
+                : "bg-white lg:p-3 p-1 text-black"
             }
           >
             Romantic
@@ -60,8 +60,8 @@ const AllMovies = () => {
             onClick={() => handleTabClick("Commedy")}
             className={
               activeTab == "Commedy"
-                ? "bg-[#f4626e] p-3"
-                : "bg-white p-3 text-black"
+                ? "bg-[#f4626e] lg:p-3 p-1"
+                : "bg-white lg:p-3 p-1 text-black"
             }
           >
             Commedy
@@ -70,8 +70,8 @@ const AllMovies = () => {
             onClick={() => handleTabClick("Thriller")}
             className={
               activeTab == "Thriller"
-                ? "bg-[#f4626e] p-3"
-                : "bg-white p-3 text-black"
+                ? "bg-[#f4626e] lg:p-3 p-1"
+                : "bg-white lg:p-3 p-1 text-black"
             }
           >
             Thriller
@@ -80,8 +80,8 @@ const AllMovies = () => {
             onClick={() => handleTabClick("Si-Fi")}
             className={
               activeTab == "Si-Fi"
-                ? "bg-[#f4626e] p-3"
-                : "bg-white p-3 text-black"
+                ? "bg-[#f4626e] lg:p-3 p-1"
+                : "bg-white lg:p-3 p-1 text-black"
             }
           >
             Si-Fi
@@ -102,7 +102,7 @@ const AllMovies = () => {
           </button>
         </div>
       </div>
-      <div className="grid grid-cols-4">
+      <div className="grid lg:grid-cols-4 grid-cols-2">
         {movies?.map((movie) => (
           <div
             onClick={() => handleViewMovie(movie._id)}
@@ -112,14 +112,14 @@ const AllMovies = () => {
             <figure>
               <Link to={`/view-details/${movie._id}`}>
                 <img
-                  className="h-[330px] w-[240px]"
+                  className="lg:h-[330px] lg:w-[240px] h-[212px] w-[164px]"
                   src={movie.img}
                   alt="movie"
                 />
               </Link>
             </figure>
-            <div className="card-body  ml-10">
-              <h2 className="card-title">{movie.name}</h2>
+            <div className="lg:card-body  p-4 lg:p-3 ml-10">
+              <h2 className="lg:card-title ">{movie.name}</h2>
               <p>Rating : {movie.rating}</p>
             </div>
           </div>

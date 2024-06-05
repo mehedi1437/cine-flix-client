@@ -51,26 +51,26 @@ const MyAllMovie = () => {
   };
   return (
     <div>
-      <h1 className="text-center text-3xl my-6 ">
+      <h1 className="text-center lg:text-3xl py-6 text-xl ">
         My Created Movies are Here {movies.length}
       </h1>
-      <div className="grid grid-cols-4 text-black gap-5 mx-5">
+      <div className="grid lg:grid-cols-4 grid-cols-2 text-black gap-5 mx-5">
         {movies?.map((movie) => (
           <div key={movie._id} className="card ">
             <figure>
               <Link to={`/view-details/${movie._id}`}>
                 <img
-                  className="h-[330px] w-[240px]"
+                  className="lg:h-[330px] lg:w-[240px] h-[212px] w-[164px]"
                   src={movie.img}
                   alt="movie"
                 />
               </Link>
             </figure>
-            <div className="  ml-10">
-              <h2 className="card-title ">{movie.name}</h2>
+            <div className="  py-2 lg:p-3 ml-10">
+              <h2 className="lg:card-title ">{movie.name}</h2>
               <p>Rating : {movie.rating}</p>
             </div>
-            <div className="space-x-5 mt-4 ">
+            <div className=" mt-4 space-x-10">
               <button className="btn bg-[#0e193a] text-white">
                 <Link to={`/dashboard/update-movie/${movie._id}`}>Edit</Link>{" "}
               </button>

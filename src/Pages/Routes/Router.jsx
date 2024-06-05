@@ -13,6 +13,7 @@ import Movies from "../Home/Movies";
 import ViewMovieDetails from "../Home/ViewMovieDetails";
 import UpdateAMovie from "../Dashboard-Component/Upadate-A-Movie/UpdateAMovie";
 import UpdateProfile from "../Dashboard-Component/UpdateProfile/UpdateProfile";
+import ViewProfile from "../Dashboard-Component/viewProfile/ViewProfile";
 
 const router = createBrowserRouter([
   {
@@ -55,6 +56,10 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/",
         element: <Home></Home>,
+      },
+      {
+        path: "/dashboard/view-profile",
+        element: <ViewProfile></ViewProfile>
       },
       {
         path: "/dashboard/update-profile/:id",
