@@ -9,7 +9,7 @@ const AllMovies = () => {
     setActiveTab(tabName);
   };
   useEffect(() => {
-    fetch(`https://cine-flix-server-phi.vercel.app/movies/${activeTab}`)
+    fetch(`http://localhost:5000/movies/${activeTab}`)
       .then((res) => res.json())
       .then((data) => {
         setMovies(data);
@@ -17,7 +17,7 @@ const AllMovies = () => {
   }, [activeTab]);
   //  handle movie search
   const handleMovieSearch = () => {
-    fetch(`https://cine-flix-server-phi.vercel.app/movieSearch/${searchText}`)
+    fetch(`http://localhost:5000/movieSearch/${searchText}`)
       .then((res) => res.json())
       .then((data) => {
         setMovies(data);

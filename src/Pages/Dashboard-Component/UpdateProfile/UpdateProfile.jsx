@@ -12,7 +12,7 @@ const UpdateProfile = () => {
   const onSubmit = (data) => {
     console.log(data);
 
-    fetch(`https://cine-flix-server-phi.vercel.app/users/${user.email}`, {
+    fetch(`http://localhost:5000/users/${user.email}`, {
       method: "PATCH",
       headers: {
         "content-type": "application/json",
@@ -24,7 +24,7 @@ const UpdateProfile = () => {
       .then((data) => {
         console.log(data);
         if (data.modifiedCount) {
-          toast.success("Movie Updated Successfully");
+          toast.success("your profile Updated Successfully");
         }
       });
   };

@@ -75,7 +75,7 @@ const Signup = () => {
               name: user.displayName,
             };
             // console.log(userInfo);
-            fetch("https://cine-flix-server-phi.vercel.app/users", {
+            fetch("http://localhost:5000/users", {
               method: "POST",
               headers: {
                 "content-type": "application/json",

@@ -10,7 +10,7 @@ const MyAllMovie = () => {
   const token = localStorage.getItem("token");
 
   useEffect(() => {
-    fetch(`https://cine-flix-server-phi.vercel.app/singleMovie/${user.email}`)
+    fetch(`http://localhost:5000/singleMovie/${user.email}`)
       .then((res) => res.json())
       .then((data) => {
         setMovies(data);
@@ -30,7 +30,7 @@ const MyAllMovie = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         // console.log("delete comfirmed");
-        fetch(`https://cine-flix-server-phi.vercel.app/movie/${id}`, {
+        fetch(`http://localhost:5000/movie/${id}`, {
           method: "DELETE",
           headers: {
             "content-type": "application/json",

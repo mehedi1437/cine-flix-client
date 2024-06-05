@@ -8,7 +8,7 @@ const AddAMovie = () => {
   const { register, handleSubmit } = useForm();
   const onSubmit = (data) => {
     // console.log(data);
-    fetch("https://cine-flix-server-phi.vercel.app/movie", {
+    fetch("http://localhost:5000/movie", {
       method: "POST",
       headers: {
         "content-type": "application/json",
