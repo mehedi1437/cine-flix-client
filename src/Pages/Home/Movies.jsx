@@ -6,7 +6,7 @@ const Movies = () => {
 
   const [searchText, setSearchText] = useState("");
   useEffect(() => {
-    fetch("http://localhost:5000/movies")
+    fetch("https://cine-flix-server-phi.vercel.app/movies")
       .then((res) => res.json())
       .then((data) => {
         setMovies(data);
@@ -14,7 +14,7 @@ const Movies = () => {
   }, []);
   //  handle movie search
   const handleMovieSearch = () => {
-    fetch(`http://localhost:5000/movieSearch/${searchText}`)
+    fetch(`https://cine-flix-server-phi.vercel.app/movieSearch/${searchText}`)
       .then((res) => res.json())
       .then((data) => {
         setMovies(data);

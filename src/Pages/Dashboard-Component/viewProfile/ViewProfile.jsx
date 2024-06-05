@@ -3,18 +3,18 @@ import { AuthContext } from "../../../Provider/AuthProvider";
 import { Link } from "react-router-dom";
 
 const ViewProfile = () => {
-    const { user } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
   const [userInfo, setUserInfo] = useState();
   useEffect(() => {
-    fetch(`http://localhost:5000/users/${user?.email}`)
+    fetch(`https://cine-flix-server-phi.vercel.app/users/${user?.email}`)
       .then((res) => res.json())
       .then((data) => setUserInfo(data));
   }, [user]);
   console.log(userInfo);
-    return (
-        <div className="min-h-[100%] flex items-center ">
-            <div className="card  w-[80%] lg:w-[50%] mx-auto  shadow-xl">
-                <h1 className="text-center my-4">View And Update your profile</h1>
+  return (
+    <div className="min-h-[100%] flex items-center ">
+      <div className="card  w-[80%] lg:w-[50%] mx-auto  shadow-xl">
+        <h1 className="text-center my-4">View And Update your profile</h1>
         <h2 className="text-center lg:text-2xl my-3 border-b-4 border-b-[#0e193a] w-fit mx-auto">
           Profile Information
         </h2>
@@ -38,8 +38,8 @@ const ViewProfile = () => {
           </div>
         </div>
       </div>
-        </div>
-    );
+    </div>
+  );
 };
 
 export default ViewProfile;
