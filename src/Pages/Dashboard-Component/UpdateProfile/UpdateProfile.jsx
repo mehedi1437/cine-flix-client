@@ -12,7 +12,7 @@ const UpdateProfile = () => {
   const onSubmit = (data) => {
     console.log(data);
 
-    fetch(`https://cine-flix-server-phi.vercel.app/users/${user.email}`, {
+    fetch(`${import.meta.env.VITE_COMMON_APIKEY}/users/${user.email}`, {
       method: "PATCH",
       headers: {
         "content-type": "application/json",

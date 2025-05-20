@@ -34,7 +34,7 @@ const router = createBrowserRouter([
         element: <ViewMovieDetails></ViewMovieDetails>,
         loader: ({ params }) =>
           fetch(
-            `https://cine-flix-server-phi.vercel.app/singleMovies/${params.id}`
+            `${import.meta.env.VITE_COMMON_APIKEY}/singleMovies/${params.id}`
           ),
       },
       {
@@ -67,9 +67,7 @@ const router = createBrowserRouter([
         path: "/dashboard/update-profile/:id",
         element: <UpdateProfile></UpdateProfile>,
         loader: ({ params }) =>
-          fetch(
-            `https://cine-flix-server-phi.vercel.app/users/get/${params.id}`
-          ),
+          fetch(`${import.meta.env.VITE_COMMON_APIKEY}/users/get/${params.id}`),
       },
       {
         path: "/dashboard/add-a-movie",
@@ -84,7 +82,7 @@ const router = createBrowserRouter([
         element: <UpdateAMovie></UpdateAMovie>,
         loader: ({ params }) =>
           fetch(
-            `https://cine-flix-server-phi.vercel.app/singleMovies/${params.id}`
+            `${import.meta.env.VITE_COMMON_APIKEY}/singleMovies/${params.id}`
           ),
       },
     ],
